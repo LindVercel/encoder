@@ -8,72 +8,91 @@
         body {
             margin: 0;
             font-family: 'Poppins', sans-serif;
-            background-color: #ff3b3b; /* Red background */
+            background: linear-gradient(135deg, #ff4b4b, #ff8888); /* Modern gradient background */
             display: flex;
             align-items: center;
             justify-content: center;
             height: 100vh;
+            color: #333333; /* Slightly darker text for better readability */
         }
         .panel {
-            width: 100%;
-            max-width: 800px;
+            width: 90%;
+            max-width: 600px;
             background: #ffffff;
-            border-radius: 8px;
-            padding: 20px;
-            box-sizing: border-box;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
             text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .panel:hover {
+            transform: translateY(-10px); /* Slight hover effect */
         }
         h1 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            color: #007bff; /* Blue text */
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            color: #007bff; /* Bright blue text */
         }
         p {
             font-size: 1rem;
             margin-bottom: 20px;
-            color: #0056b3; /* Darker blue for secondary text */
+            color: #555555; /* Neutral gray for instructions */
         }
         textarea {
             width: 100%;
             height: 120px;
-            margin-bottom: 10px;
-            padding: 10px;
-            border: 1px solid #007bff; /* Blue border */
-            border-radius: 6px;
-            font-size: 16px;
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 2px solid #cccccc; /* Softer border */
+            border-radius: 12px;
+            font-size: 1rem;
             resize: none;
             box-sizing: border-box;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
         textarea:focus {
             outline: none;
-            border-color: #0056b3; /* Darker blue on focus */
-            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+            border-color: #007bff;
+            box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
         }
         button {
-            padding: 10px 20px;
-            font-size: 16px;
+            padding: 12px 24px;
+            font-size: 1rem;
             color: #ffffff;
-            background-color: #007bff; /* Blue button */
+            background-color: #007bff; /* Bright blue button */
             border: none;
-            border-radius: 6px;
+            border-radius: 8px;
             cursor: pointer;
             margin: 5px;
-            transition: background-color 0.2s ease;
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
         button:hover {
             background-color: #0056b3; /* Darker blue on hover */
+            transform: scale(1.05); /* Slight scaling effect */
         }
         .output-box {
-            background-color: #e9f5ff; /* Light blue background */
-            border: 1px solid #007bff; /* Blue border */
-            border-radius: 6px;
+            background-color: #f9f9f9; /* Light gray background */
+            border: 2px solid #cccccc; /* Softer border */
+            border-radius: 12px;
             padding: 15px;
-            font-size: 16px;
-            color: #0056b3; /* Dark blue text */
+            font-size: 1rem;
+            color: #333333; /* Neutral dark text */
             min-height: 50px;
             word-wrap: break-word;
             word-break: break-word;
-            margin-top: 10px;
+            margin-top: 15px;
+        }
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            textarea {
+                height: 100px;
+            }
+            button {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
