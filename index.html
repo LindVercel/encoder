@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Encoding Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            color: #333;
+        }
+        textarea {
+            width: 90%;
+            max-width: 600px;
+            height: 100px;
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .output {
+            margin-top: 20px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <h1>Custom Encoding Tool</h1>
+    <textarea id="inputText" placeholder="Type text here..."></textarea>
+    <div>
+        <button onclick="encodeText()">Encode</button>
+        <button onclick="decodeText()">Decode</button>
+    </div>
+    <div class="output">
+        <h3>Output:</h3>
+        <p id="outputText"></p>
+    </div>
+    <script>
+        const encodingMap = {
+            a: "cA1", b: "cA2", c: "cA3", d: "cA4", e: "cA5", f: "cA6", g: "cA7", h: "cA8", i: "cA9", j: "cA10",
+            k: "cA11", l: "cA12", m: "cA13", n: "cA14", o: "cA15", p: "cA16", q: "cA17", r: "cA18", s: "cA19", t: "cA20",
+            u: "cA21", v: "cA22", w: "cA23", x: "cA24", y: "cA25", z: "cA26",
+            A: "ca1", B: "ca2", C: "ca3", D: "ca4", E: "ca5", F: "ca6", G: "ca7", H: "ca8", I: "ca9", J: "ca10",
+            K: "ca11", L: "ca12", M: "ca13", N: "ca14", O: "ca15", P: "ca16", Q: "ca17", R: "ca18", S: "ca19", T: "ca20",
+            U: "ca21", V: "ca22", W: "ca23", X: "ca24", Y: "ca25", Z: "ca26",
+            1: "9n5", 2: "8n5", 3: "7n5", 4: "6n5", 5: "5n5", 6: "4n5", 7: "3n5", 8: "2n5", 9: "1n5", 0: "0n5"
+        };
+
+        const decodingMap = Object.fromEntries(Object.entries(encodingMap).map(([key, value]) => [value, key]));
+
+        function encodeText() {
+            const input = document.getElementById("inputText").value;
+            const encoded = input.split("").map(char => encodingMap[char] || char).join("");
+            document.getElementById("outputText").innerText = encoded;
+        }
+
+        function decodeText() {
+            const input = document.getElementById("inputText").value;
+            let decoded = input;
+            Object.keys(decodingMap).forEach(encodedChar => {
+                decoded = decoded.split(encodedChar).join(decodingMap[encodedChar]);
+            });
+            document.getElementById("outputText").innerText = decoded;
+        }
+    </script>
+</body>
+</html>
