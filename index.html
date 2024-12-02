@@ -3,63 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Encoding Tool</title>
+    <title> Encoding Tool</title>
     <style>
         body {
             margin: 0;
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #ff4b4b, #ff8888); /* Modern gradient background */
+            background: linear-gradient(135deg, #8B0000, #660000); /* Dark blood red gradient */
             display: flex;
             align-items: center;
             justify-content: center;
             height: 100vh;
-            color: #333333; /* Slightly darker text for better readability */
+            color: #f5f5f5; /* Light text for contrast */
         }
         .panel {
             width: 90%;
             max-width: 600px;
-            background: #ffffff;
+            background: #1c1c1c; /* Dark background for contrast */
             border-radius: 16px;
             padding: 30px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Strong shadow for dramatic effect */
             text-align: center;
+            border: 3px solid #8B0000; /* Blood red border */
             transition: transform 0.3s ease;
         }
         .panel:hover {
-            transform: translateY(-10px); /* Slight hover effect */
+            transform: scale(1.05); /* Slight zoom effect */
         }
         h1 {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             margin-bottom: 15px;
-            color: #007bff; /* Bright blue text */
+            color: #ff3333; /* Blood red text */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Shadow for a sinister look */
         }
         p {
-            font-size: 1rem;
+            font-size: 1.1rem;
             margin-bottom: 20px;
-            color: #555555; /* Neutral gray for instructions */
+            color: #f0f0f0; /* Light text for readability */
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Subtle shadow for spooky effect */
         }
         textarea {
             width: 100%;
             height: 120px;
             margin-bottom: 20px;
             padding: 15px;
-            border: 2px solid #cccccc; /* Softer border */
+            border: 2px solid #ff3333; /* Blood red border */
             border-radius: 12px;
             font-size: 1rem;
             resize: none;
             box-sizing: border-box;
+            background-color: #2b2b2b; /* Darker background for textarea */
+            color: #f5f5f5; /* Light text in textarea */
             transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
         textarea:focus {
             outline: none;
-            border-color: #007bff;
-            box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+            border-color: #ff6666; /* Lighter blood red when focused */
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.7); /* Red glow effect */
         }
         button {
             padding: 12px 24px;
-            font-size: 1rem;
+            font-size: 1.2rem;
             color: #ffffff;
-            background-color: #007bff; /* Bright blue button */
+            background-color: #ff3333; /* Blood red button */
             border: none;
             border-radius: 8px;
             cursor: pointer;
@@ -67,78 +72,8 @@
             transition: background-color 0.3s ease, transform 0.2s ease;
         }
         button:hover {
-            background-color: #0056b3; /* Darker blue on hover */
+            background-color: #cc0000; /* Darker red on hover */
             transform: scale(1.05); /* Slight scaling effect */
         }
         .output-box {
-            background-color: #f9f9f9; /* Light gray background */
-            border: 2px solid #cccccc; /* Softer border */
-            border-radius: 12px;
-            padding: 15px;
-            font-size: 1rem;
-            color: #333333; /* Neutral dark text */
-            min-height: 50px;
-            word-wrap: break-word;
-            word-break: break-word;
-            margin-top: 15px;
-        }
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 1.8rem;
-            }
-            textarea {
-                height: 100px;
-            }
-            button {
-                padding: 10px 20px;
-                font-size: 0.9rem;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="panel">
-        <h1>Encoding Tool</h1>
-        <p>Enter text to encode or decode below:</p>
-        <textarea id="inputText" placeholder="Enter text here..."></textarea>
-        <button onclick="encodeText()">Encode</button>
-        <button onclick="decodeText()">Decode</button>
-        <div class="output-box" id="outputText">
-            <!-- Output will be displayed here -->
-        </div>
-    </div>
-    <script>
-        const encodingMap = {
-            a: "cA1", b: "cA2", c: "cA3", d: "cA4", e: "cA5", f: "cA6", g: "cA7", h: "cA8", i: "cA9", j: "cA10",
-            k: "cA11", l: "cA12", m: "cA13", n: "cA14", o: "cA15", p: "cA16", q: "cA17", r: "cA18", s: "cA19", t: "cA20",
-            u: "cA21", v: "cA22", w: "cA23", x: "cA24", y: "cA25", z: "cA26",
-            A: "ca1", B: "ca2", C: "ca3", D: "ca4", E: "ca5", F: "ca6", G: "ca7", H: "ca8", I: "ca9", J: "ca10",
-            K: "ca11", L: "ca12", M: "ca13", N: "ca14", O: "ca15", P: "ca16", Q: "ca17", R: "ca18", S: "ca19", T: "ca20",
-            U: "ca21", V: "ca22", W: "ca23", X: "ca24", Y: "ca25", Z: "ca26",
-            1: "9n5", 2: "8n5", 3: "7n5", 4: "6n5", 5: "5n5", 6: "4n5", 7: "3n5", 8: "2n5", 9: "1n5", 0: "0n5"
-        };
-
-        const decodingMap = Object.fromEntries(Object.entries(encodingMap).map(([key, value]) => [value, key]));
-
-        function encodeText() {
-            const input = document.getElementById("inputText").value;
-            const encoded = input.split("").map(char => encodingMap[char] || char).join("");
-            document.getElementById("outputText").innerText = encoded;
-        }
-
-        function decodeText() {
-            const input = document.getElementById("inputText").value;
-            let decoded = input;
-
-            // Sort the encoded keys by length (longest first)
-            const sortedKeys = Object.keys(decodingMap).sort((a, b) => b.length - a.length);
-
-            sortedKeys.forEach(encodedChar => {
-                decoded = decoded.split(encodedChar).join(decodingMap[encodedChar]);
-            });
-
-            document.getElementById("outputText").innerText = decoded;
-        }
-    </script>
-</body>
-</html>
+            background-color: #2b2b2b; /* Dark background for
