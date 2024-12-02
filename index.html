@@ -127,9 +127,14 @@
         function decodeText() {
             const input = document.getElementById("inputText").value;
             let decoded = input;
-            Object.keys(decodingMap).forEach(encodedChar => {
+
+            // Sort the encoded keys by length (longest first)
+            const sortedKeys = Object.keys(decodingMap).sort((a, b) => b.length - a.length);
+
+            sortedKeys.forEach(encodedChar => {
                 decoded = decoded.split(encodedChar).join(decodingMap[encodedChar]);
             });
+
             document.getElementById("outputText").innerText = decoded;
         }
     </script>
