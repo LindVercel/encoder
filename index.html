@@ -1,123 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Encode.com</title>
-   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&amp;display=swap" rel="stylesheet">
-   <meta property="og:title" content="Lindencoder">
-   <meta property="og:description" content="A website made by TFTLinden.">
-   <meta property="og:image" content="https://raw.githubusercontent.com/LindVercel/encoder/refs/heads/main/Screenshot%202024-12-01%20212619.png">
-   <meta property="og:url" content="https://lindencoder.vercel.app/">
-   <meta property="og:type" content="website">
-   <meta name="twitter:card" content="summary_large_image">
-   <meta name="twitter:title" content="Lindencoder">
-   <meta name="twitter:description" content="A website made by TFTLinden.">
-   <meta name="twitter:image" content="https://raw.githubusercontent.com/LindVercel/encoder/refs/heads/main/Screenshot%202024-12-01%20212619.png">
-   <style>
-       body {
-           margin: 0;
-           font-family: 'Poppins', sans-serif;
-           background-color: #e3f2fd; /* Light blue background */
-           color: #0d47a1; /* Dark blue text */
-           display: flex;
-           flex-direction: column;
-           align-items: center;
-           justify-content: flex-start;
-           min-height: 100vh;
-           padding: 20px;
-       }
-       .container {
-           width: 100%;
-           max-width: 800px;
-           background: #ffffff;
-           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-           border-radius: 8px;
-           padding: 20px;
-           text-align: center;
-       }
-       h1 {
-           margin-bottom: 10px;
-           font-size: 2rem;
-           color: #0d47a1; /* Dark blue */
-       }
-       p {
-           margin-bottom: 20px;
-           font-size: 1rem;
-           color: #1565c0; /* Medium blue */
-       }
-       textarea {
-           width: 100%;
-           height: 120px;
-           padding: 15px;
-           border: 1px solid #90caf9; /* Light blue border */
-           border-radius: 6px;
-           font-size: 16px;
-           font-family: inherit;
-           margin-bottom: 20px;
-           resize: none;
-           box-sizing: border-box;
-           background-color: #e3f2fd; /* Light blue */
-           color: #0d47a1; /* Dark blue */
-       }
-       textarea:focus {
-           outline: none;
-           border-color: #0d47a1;
-           box-shadow: 0 0 0 0.2rem rgba(13, 71, 161, 0.25);
-       }
-       .button-group {
-           display: flex;
-           justify-content: center;
-           gap: 10px;
-           margin-bottom: 20px;
-       }
-       button {
-           padding: 10px 20px;
-           font-size: 16px;
-           color: #ffffff;
-           background-color: #0d47a1; /* Dark blue */
-           border: none;
-           border-radius: 6px;
-           cursor: pointer;
-           transition: background-color 0.2s ease;
-       }
-       button:hover {
-           background-color: #1565c0; /* Medium blue */
-       }
-       .output-box {
-           background-color: #bbdefb; /* Light blue */
-           border: 1px solid #90caf9; /* Light blue border */
-           border-radius: 6px;
-           padding: 15px;
-           font-size: 16px;
-           color: #0d47a1; /* Dark blue text */
-           word-wrap: break-word;
-           word-break: break-word;
-           min-height: 80px;
-       }
-       footer {
-           margin-top: 20px;
-           color: #1565c0; /* Medium blue */
-           font-size: 0.9rem;
-       }
-   </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Small Encoding Tool</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #ff3b3b; /* Red background */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .panel {
+            width: 320px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #900000; /* Dark red */
+        }
+        textarea {
+            width: 100%;
+            height: 80px;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ff7b7b; /* Light red border */
+            border-radius: 6px;
+            font-size: 14px;
+            box-sizing: border-box;
+            resize: none;
+        }
+        textarea:focus {
+            outline: none;
+            border-color: #c00000; /* Medium red border */
+        }
+        button {
+            padding: 8px 16px;
+            font-size: 14px;
+            color: #ffffff;
+            background-color: #c00000; /* Medium red */
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        button:hover {
+            background-color: #900000; /* Dark red */
+        }
+        .output-box {
+            background-color: #ffe3e3; /* Light red background */
+            border: 1px solid #ff7b7b; /* Light red border */
+            border-radius: 6px;
+            padding: 10px;
+            font-size: 14px;
+            color: #900000; /* Dark red text */
+            min-height: 50px;
+            word-wrap: break-word;
+            word-break: break-word;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Custom Encoding Tool</h1>
-        <p>Type your text below to encode or decode using the custom format.</p>
+    <div class="panel">
+        <h1>Encoding Tool</h1>
         <textarea id="inputText" placeholder="Enter text here..."></textarea>
-        <div class="button-group">
-            <button onclick="encodeText()">Encode</button>
-            <button onclick="decodeText()">Decode</button>
-        </div>
+        <button onclick="encodeText()">Encode</button>
+        <button onclick="decodeText()">Decode</button>
         <div class="output-box" id="outputText">
             <!-- Output will be displayed here -->
         </div>
     </div>
-    <footer>
-        Made by TFTLinden.
-    </footer>
     <script>
         const encodingMap = {
             a: "cA1", b: "cA2", c: "cA3", d: "cA4", e: "cA5", f: "cA6", g: "cA7", h: "cA8", i: "cA9", j: "cA10",
